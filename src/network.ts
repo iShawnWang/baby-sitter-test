@@ -1,5 +1,5 @@
 export const createFetch200 = () => {
-  return fetch("https://baby-sitter-test-api.vercel.app/api/request/200");
+  return fetch("https://baby-sitter-test-api.vercel.app/api/status/200");
 };
 
 export const createSlowFetch = () => {
