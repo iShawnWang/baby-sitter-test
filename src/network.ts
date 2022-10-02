@@ -4,7 +4,7 @@ export const createFetch200 = () => {
 
 export const createSlowFetch = () => {
   // TODO 3s以上
-  return fetch('https://jsonplaceholder.typicode.com/db')
+  return fetch('https://baby-sitter-test-api.vercel.app/api/slow/3000')
 }
 
 export const createFetchPOST200 = () => {
@@ -22,16 +22,16 @@ export const createFetchPOST200 = () => {
 };
 
 export const createFetch404 = () => {
-  return fetch("https://mock.codes/404");
+  return fetch("https://baby-sitter-test-api.vercel.app/api/status/404");
 };
 
 export const createFetch500 = () => {
-  return fetch("https://mock.codes/500");
+  return fetch("https://baby-sitter-test-api.vercel.app/api/status/500");
 };
 
 export const createXhr200 = () => {
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "https://mock.codes/200");
+  oReq.open("GET", "https://baby-sitter-test-api.vercel.app/api/status/200");
   oReq.send();
 };
 
@@ -48,11 +48,11 @@ export const createXhrPOST200 = () => {
 
 export const createXhr404 = () => {
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "https://mock.codes/404");
+  oReq.open("GET", "https://baby-sitter-test-api.vercel.app/api/status/404");
   oReq.send();
 };
 export const createXhr500 = () => {
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "https://mock.codes/500");
+  oReq.open("GET", "https://baby-sitter-test-api.vercel.app/api/status/500");
   oReq.send();
 };
