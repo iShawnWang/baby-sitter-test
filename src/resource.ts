@@ -20,3 +20,10 @@ export const createCSS200 = () => {
   document.getElementsByTagName("head")[0].appendChild(link)
   return link
 }
+
+export const createImg200 = () => {
+  var img = document.createElement("img");
+  img.src = "https://baby-sitter-test-api.vercel.app/demo.webp"
+  document.getElementsByTagName("head")[0].appendChild(img)
+  return img
+}
