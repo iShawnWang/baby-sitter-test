@@ -2,6 +2,7 @@
 import { Link } from 'umi'
 import * as Errors from '../../../../src/jserror'
 import * as Network from '../../../../src/network'
+import * as Resource from '../../../../src/Resource'
 
 export default function IndexPage() {
 
@@ -21,6 +22,12 @@ export default function IndexPage() {
         <h1>Network</h1>
         {Object.keys(Network).map(e => {
           return <button key={e} onClick={Network[e]}>{e}</button>
+        })}
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <h1>Resource</h1>
+        {Object.keys(Resource).map(e => {
+          return <button key={e} onClick={Resource[e]}>{e}</button>
         })}
       </div>
     </>
