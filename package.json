@@ -1,25 +1,28 @@
 {
   "name": "baby-sitter-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "npx playwright test",
-    "test": "npx playwright test"
+    "test": "rimraf ./src/dist && playwright test",
+    "serve": "serve -p 23333 ./src/dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iShawnWang/baby-sitter-test.git"
-  },
-  "keywords": [],
-  "author": "wangshuai",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/iShawnWang/baby-sitter-test/issues"
-  },
-  "homepage": "https://github.com/iShawnWang/baby-sitter-test#readme",
+  "author": "iShawnWang",
+  "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.25.2",
-    "@types/react": "^18.0.21"
+    "@types/node": "^18.11.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
+    "globby": "^13.1.2",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.74.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }

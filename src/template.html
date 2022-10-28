@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      crossorigin="anonymous"
+      src="http://localhost:3000/index.umd.js"
+    ></script>
+    <script>
+      window._SERAPH_ = new MonitorJS({
+        seraphId: "f800ffffffd04920",
+        source: "H5",
+        debug: true,
+        sdkEnv: "test",
+        queueInterval: 4000,
+        trace: {
+          serviceName: "wangshuai-demo",
+          corsUrls: [/jsonplaceholder/, /example/],
+        },
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>

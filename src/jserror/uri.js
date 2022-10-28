@@ -1,0 +1,1 @@
+encodeURI("\uD800");

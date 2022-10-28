@@ -1,10 +1,16 @@
+import axios from './axios'
+import { fetch as fetchPolyfill } from './fetch-polyfill'
+
 export const createFetch200 = () => {
   return fetch("https://baby-sitter-test-api.vercel.app/api/status/200");
 };
 
-export const createSlowFetch = () => {
-  // TODO 3s以上
+export const createFetchSlow = () => {
   return fetch('https://baby-sitter-test-api.vercel.app/api/slow/3000')
+}
+
+export const createFetchTimeout = () => {
+  return fetch('https://baby-sitter-test-api.vercel.app/api/slow/31000')
 }
 
 export const createFetchPOST200 = () => {
@@ -56,3 +62,11 @@ export const createXhr500 = () => {
   oReq.open("GET", "https://baby-sitter-test-api.vercel.app/api/status/500");
   oReq.send();
 };
+
+export const createAxios200 = () => {
+  return axios.get('https://baby-sitter-test-api.vercel.app/api/status/200')
+}
+
+export const createFetchPolyfill200 = () => {
+  return fetchPolyfill('https://baby-sitter-test-api.vercel.app/api/status/200')
+}

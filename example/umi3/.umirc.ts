@@ -1,14 +1,17 @@
 import { defineConfig } from 'umi';
-import { SeraphWebpackPlugin } from 'seraph-webpack-plugin';
+import { SeraphWebpackPlugin } from '@za/sourcemap-webpack-plugin';
 
 export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  dynamicImport: {},
   hash: true,
   devtool: 'source-map',
   routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
+  webpack5: {},
+  esbuild: {},
   chainWebpack(memo) {
     memo.plugin('seraph-webpack-plugin').use(SeraphWebpackPlugin, [
       {

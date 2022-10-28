@@ -1,5 +1,138 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import type { PlaywrightTestConfig, Request, Page } from "@playwright/test";
+import { devices, expect } from "@playwright/test";
+import webpack from "webpack";
+import webpackConf from "./src/webpack.conf";
+
+export const genPage = ({ path, filename, template }) => {
+  return new Promise<{ filepath: string; stat: any }>((resolve, reject) => {
+    webpack(
+      webpackConf({ entry: path, filename, template }),
+      async (err, stat) => {
+        await expect(err).toBeNull;
+        await expect(stat).toBeDefined();
+        if (err) {
+          reject(err);
+        }
+        resolve({
+          stat: stat,
+          filepath: `http://localhost:23333/${filename}.html`, // 用 localhost: 而不是 file: 防止 "Script Error."
+        });
+      }
+    );
+  });
+};
+
+export const genPageAndGoto = async ({
+  path,
+  filename,
+  page,
+  template,
+}: {
+  path: string;
+  filename: string;
+  page: Page;
+  template?: string;
+}) => {
+  const { filepath } = await genPage({ path, filename, template });
+  await page.goto(filepath);
+};
+
+export const waitNextRequest = async (page, timeout = 6) => {
+  return new Promise<Request>((resolve, reject) => {
+    page.on("request", (request: Request) => {
+      resolve(request);
+    });
+    setTimeout(() => {
+      reject("timeout !");
+    }, timeout * 1000);
+  });
+};
+
+expect.extend({
+  toInlucdesProps(received, argument) {
+    if (!received) {
+      return {
+        pass: false,
+        message: `received: ${this.utils.printReceived(received)}`,
+      };
+    }
+    if (!argument) {
+      return {
+        pass: false,
+        message: `argument: ${this.utils.printReceived(argument)}`,
+      };
+    }
+    const ks = Object.keys(argument);
+    const valid = ks.every((k) => String(received[k]).includes(argument[k]));
+    return {
+      pass: !!valid,
+      message: () =>
+        `expected ${this.utils.printReceived(
+          received
+        )} to contain props ${this.utils.printExpected(argument)}`,
+    };
+  },
+  toIncludesObject(received, argument) {
+    if (!received) {
+      return {
+        pass: false,
+        message: `received: ${this.utils.printReceived(received)}`,
+      };
+    }
+    if (!argument) {
+      return {
+        pass: false,
+        message: `argument: ${this.utils.printReceived(argument)}`,
+      };
+    }
+    const ks = Object.keys(argument);
+    const find = received.find((r) =>
+      ks.every((k) => String(r[k]).includes(argument[k]))
+    );
+    return {
+      pass: !!find,
+      message: () =>
+        `expected ${this.utils.printReceived(
+          received
+        )} to contain object ${this.utils.printExpected(argument)}`,
+    };
+  },
+  toHaveCommonPropties(received, argument) {
+    if (!received) {
+      return {
+        pass: false,
+        message: `received: ${this.utils.printReceived(received)}`,
+      };
+    }
+    expect(received).toBeDefined();
+    expect(received.source).toBe("H5");
+    expect(received.env).toBe("prd");
+    expect(received.jsSdkVersion).toBe("1.1.0");
+    expect(received.url).toBeDefined();
+    expect(received.seraphId).toBeDefined();
+    expect(received.sessionId).toBeDefined();
+    expect(received.network).toBeDefined();
+    expect(received.userAgent).toBeDefined();
+    expect(received.deviceId).toBeDefined();
+    expect(received.userId).toBeDefined();
+    expect(received.events).toIncludesObject({
+      to: `http://localhost:23333/${argument.type}`,
+      from: "",
+      category: "pv",
+      type: "init",
+      timestamp: 166,
+    });
+    return {
+      pass: true,
+      message: () =>
+        `expected ${this.utils.printReceived(
+          received
+        )} to contain common properties ${this.utils.printExpected(argument)}`,
+    };
+  },
+});
+
+expect.extend({});
 
 /**
  * Read environment variables from file.
@@ -11,7 +144,7 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  testDir: "./tests",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -19,7 +152,7 @@ const config: PlaywrightTestConfig = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 5000,
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,77 +161,27 @@ const config: PlaywrightTestConfig = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  workers: 4,
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    baseURL: "http://localhost:23333",
     actionTimeout: 0,
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
   },
-
-  /* Configure projects for major browsers */
+  webServer: {
+    command: "npm run serve",
+    port: 23333,
+    timeout: 3 * 1000,
+    reuseExistingServer: !process.env.CI,
+  },
   projects: [
     {
-      name: 'chromium',
+      name: "chromium",
       use: {
-        ...devices['Desktop Chrome'],
+        ...devices["Desktop Chrome"],
       },
     },
-
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
-
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
-
-    {
-      name: 'iPhone11',
-      use: {
-        browserName: 'webkit',
-        ...devices['iPhone 12'],
-      },
-    },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: {
-    //     ...devices['Pixel 5'],
-    //   },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //   },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: {
-    //     channel: 'msedge',
-    //   },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: {
-    //     channel: 'chrome',
-    //   },
-    // },
   ],
 };
 
