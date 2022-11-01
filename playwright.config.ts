@@ -174,7 +174,50 @@ const config: PlaywrightTestConfig = {
     timeout: 3 * 1000,
     reuseExistingServer: !process.env.CI,
   },
-  projects: [
+  projects: process.env.CI ? [
+    {
+      name: "Desktop Chrome",
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+    {
+      name: 'Desktop Edge',
+      use: {
+        ...devices['Desktop Edge']
+      }
+    },
+    {
+      name: 'Desktop Firefox',
+      use: {
+        ...devices['Desktop Firefox']
+      }
+    },
+    {
+      name: 'iPhone 6',
+      use: {
+        ...devices['iPhone 6'],
+      },
+    },
+    {
+      name: 'iPad Mini',
+      use: {
+        ...devices['iPad Mini'],
+      },
+    },
+    {
+      name: 'Nexus 4',
+      use: {
+        ...devices['Nexus 4']
+      }
+    },
+    {
+      name: 'Pixel 2',
+      use: {
+        ...devices['Pixel 2']
+      }
+    }
+  ] : [
     {
       name: "chromium",
       use: {
