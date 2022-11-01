@@ -7,6 +7,7 @@ specifiers:
   '@umijs/plugin-esbuild': ^1.4.2
   '@umijs/preset-react': 1.x
   '@umijs/test': ^3.5.34
+  '@za/seraph-sdk': ^2.0.0
   '@za/sourcemap-webpack-plugin': ^1.0.0
   lint-staged: ^10.0.7
   prettier: ^2.2.0
@@ -18,6 +19,7 @@ specifiers:
 
 dependencies:
   '@ant-design/pro-layout': 6.38.22_sfoxds7t5ydpegc3knd667wn6m
+  '@za/seraph-sdk': 2.0.0
   '@za/sourcemap-webpack-plugin': 1.0.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -1483,6 +1485,13 @@ packages:
       '@umijs/babel-preset-umi': 3.5.34
       '@umijs/deps': 3.5.34
 
+  /@za/seraph-sdk/2.0.0:
+    resolution: {integrity: sha512-f04yOtL2c5wuAZhmbK8lEcP7qhK1rRTiNIuwS1hJz+3e69klqtERlt6PpNk1pMWcm/EyAtroWW27MAde79IQoA==}
+    dependencies:
+      lodash.uniqby: 4.7.0
+      query-string: 7.1.1
+    dev: false
+
   /@za/sourcemap-webpack-plugin/1.0.0:
     resolution: {integrity: sha512-Ye39UxEnxxxmmVoF2B4e5AP/lfgBira1aQ+DIy22yxVFkVnwFCs1Cn23B/J+bZfzsEcPxeEkY+HkKC1OgFw38Q==}
     dependencies:
@@ -2589,7 +2598,7 @@ packages:
     dev: true
 
   /decode-uri-component/0.2.0:
-    resolution: {integrity: sha512-hjf+xovcEn31w/EUYdTXQh/8smFL/dzYjohQGEIgjyNavaJfBY2p5F527Bo1VPATxv0VYTUC2bOcXvqFwk78Og==}
+    resolution: {integrity: sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=}
     engines: {node: '>=0.10'}
 
   /dedent/0.7.0:
@@ -3037,7 +3046,7 @@ packages:
       to-regex-range: 5.0.1
 
   /filter-obj/1.1.0:
-    resolution: {integrity: sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==}
+    resolution: {integrity: sha1-mzERErxsYSehbgFsbF1/GeCAXFs=}
     engines: {node: '>=0.10.0'}
 
   /find-up/4.1.0:
@@ -4433,6 +4442,10 @@ packages:
     resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
     dev: true
 
+  /lodash.uniqby/4.7.0:
+    resolution: {integrity: sha1-2ZwHpmnp5tJOE2Lf4mbGdhavEwI=}
+    dev: false
+
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
@@ -5410,20 +5423,30 @@ packages:
     dev: true
 
   /query-string/4.3.4:
-    resolution: {integrity: sha512-O2XLNDBIg1DnTOa+2XrIwSiXEV8h2KImXUnjhhn2+UsvZ+Es2uyd5CCRTNQlDGbzUQOW3aYCBx9rVA6dzsiY7Q==}
+    resolution: {integrity: sha1-u7aTucqRXCMlFbIosaArYJBD2+s=}
     engines: {node: '>=0.10.0'}
     dependencies:
       object-assign: 4.1.1
       strict-uri-encode: 1.1.0
 
   /query-string/6.14.1:
-    resolution: {integrity: sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==}
+    resolution: {integrity: sha1-esLcpG2n8wlEm6D4ax/SglWwyGo=}
     engines: {node: '>=6'}
     dependencies:
       decode-uri-component: 0.2.0
       filter-obj: 1.1.0
       split-on-first: 1.1.0
       strict-uri-encode: 2.0.0
+
+  /query-string/7.1.1:
+    resolution: {integrity: sha512-MplouLRDHBZSG9z7fpuAAcI7aAYjDLhtsiVZsevsfaHWDS2IDdORKbSd1kWUA+V4zyva/HZoSfpwnYMMQDhb0w==}
+    engines: {node: '>=6'}
+    dependencies:
+      decode-uri-component: 0.2.0
+      filter-obj: 1.1.0
+      split-on-first: 1.1.0
+      strict-uri-encode: 2.0.0
+    dev: false
 
   /querystring-es3/0.2.1:
     resolution: {integrity: sha512-773xhDQnZBMFobEiztv8LIl70ch5MSF/jUQVlhwFyBILqq96anmoctVIYz+ZRp0qbCKATTn6ev02M3r7Ga5vqA==}
@@ -6930,7 +6953,7 @@ packages:
     dev: true
 
   /split-on-first/1.1.0:
-    resolution: {integrity: sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==}
+    resolution: {integrity: sha1-9hCv7uOxK84dDDBCXnY5i3gkml8=}
     engines: {node: '>=6'}
 
   /split-string/3.1.0:
@@ -6982,11 +7005,11 @@ packages:
     dev: false
 
   /strict-uri-encode/1.1.0:
-    resolution: {integrity: sha512-R3f198pcvnB+5IpnBlRkphuE9n46WyVl8I39W/ZUTZLz4nqSP/oLYUrcnJrw462Ds8he4YKMov2efsTIw1BDGQ==}
+    resolution: {integrity: sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=}
     engines: {node: '>=0.10.0'}
 
   /strict-uri-encode/2.0.0:
-    resolution: {integrity: sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==}
+    resolution: {integrity: sha1-ucczDHBChi9rFC3CdLvMWGbONUY=}
     engines: {node: '>=4'}
 
   /string-argv/0.3.1:

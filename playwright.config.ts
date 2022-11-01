@@ -132,7 +132,6 @@ expect.extend({
   },
 });
 
-expect.extend({});
 
 /**
  * Read environment variables from file.

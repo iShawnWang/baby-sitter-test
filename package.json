@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "npx playwright test",
     "test": "rimraf ./src/dist && playwright test",
-    "serve": "serve -p 23333 ./src/dist"
+    "serve": "npx serve -p 23333 ./src/dist"
   },
   "author": "iShawnWang",
   "license": "MIT",

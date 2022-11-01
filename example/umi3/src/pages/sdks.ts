@@ -1,19 +1,36 @@
 import { appendScript } from './util'
+import {MonitorJS} from '@za/seraph-sdk'
 
 export const createSeraphMonitorSDK = () => {
-  const s = appendScript({ src: window.location.href.indexOf('localhost') !== -1 ? 'http://localhost:3000/index.umd.js' : 'https://s.zhongan.io/seraph-js-sdk/dist/js/monitor.1.0.5.js' })
-  s.onload = () => {
-    window._SERAPH_ = new MonitorJS({
-      siteId: "test",
-      source: "H5",
+  // const s = appendScript({ src: window.location.href.indexOf('localhost') !== -1 ? 'http://localhost:3000/index.umd.js' : 'https://s.zhongan.io/seraph-js-sdk/dist/js/monitor.1.0.5.js' })
+
+  // s.onload = () => {
+  //   window._SERAPH_ = MonitorJS({
+  //     siteId: "test",
+  //     debug: true,
+  //     trace: {
+  //       serviceName: 'wangshuai-demo',
+  //       serviceId: '2333',
+  //       companyId: '79002',
+  //       env: 'prd',
+  //       corsUrls: [/jsonplaceholder/, /example/],
+  //     },
+  //   });
+  // }
+
+    window._SERAPH_ = MonitorJS({
+      seraphId: "test",
       debug: true,
       trace: {
         serviceName: 'wangshuai-demo',
+        serviceId: '2333',
+        companyId: '79002',
+        env: 'prd',
         corsUrls: [/jsonplaceholder/, /example/],
       },
     });
-  }
 }
+
 
 export const createAliArmsSDK = () => {
   const s = appendScript({ src: 'https://retcode.alicdn.com/retcode/bl.js' })
