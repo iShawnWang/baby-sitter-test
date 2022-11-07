@@ -176,12 +176,6 @@ const config: PlaywrightTestConfig = {
   },
   projects: process.env.CI ? [
     {
-      name: "Desktop Chrome",
-      use: {
-        ...devices["Desktop Chrome"],
-      },
-    },
-    {
       name: 'Desktop Edge',
       use: {
         ...devices['Desktop Edge']
@@ -200,23 +194,11 @@ const config: PlaywrightTestConfig = {
       },
     },
     {
-      name: 'iPad Mini',
-      use: {
-        ...devices['iPad Mini'],
-      },
-    },
-    {
       name: 'Nexus 4',
       use: {
         ...devices['Nexus 4']
       }
     },
-    {
-      name: 'Pixel 2',
-      use: {
-        ...devices['Pixel 2']
-      }
-    }
   ] : [
     {
       name: "chromium",

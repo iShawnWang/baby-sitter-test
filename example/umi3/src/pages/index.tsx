@@ -7,6 +7,7 @@ import * as Resource from './resource'
 import * as ThirdParty from './thirdparty'
 
 export default function IndexPage() {
+
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
