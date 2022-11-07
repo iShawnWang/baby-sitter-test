@@ -3,4 +3,5 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 
-/src/dist
+/src/dist/*
+!/src/dist/monitor.trace.umd.js
