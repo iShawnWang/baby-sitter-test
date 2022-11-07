@@ -2,8 +2,7 @@
   "name": "baby-sitter-test",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npx playwright test",
-    "test": "rimraf ./src/dist && playwright test",
+    "test": "npx playwright test",
     "serve": "npx serve -p 23333 ./src/dist"
   },
   "author": "iShawnWang",
