@@ -1,3 +1,3 @@
 (async function () {
-  await Promise.reject("await promise reject");
+  await Promise.reject(new Error("await promise reject"));
 })();

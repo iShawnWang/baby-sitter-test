@@ -1,1 +1,1 @@
-Promise.reject("rejected Promise");
+Promise.reject(new Error("rejected Promise"));

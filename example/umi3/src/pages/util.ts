@@ -1,6 +1,6 @@
 export const appendScript = ({ src }: { src: string }) => {
   var s = document.createElement("script");
-  s.src = "https://seraph-oss-config-test.oss-cn-hangzhou.aliyuncs.com/sourcemap/monitor.2.0.0.trace.js?OSSAccessKeyId=LTAI5t6ih9QjZ2EVMs9X7NnD&Expires=1667288612&Signature=gKp%2FL7DTXmTgWQ6mpMXrTOwEWp0%3D";
+  s.src = src;
   s.crossOrigin = "anonymous";
   var firstScriptTag = document.getElementsByTagName("script")[0];
   firstScriptTag.parentNode?.insertBefore(s, firstScriptTag);

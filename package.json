@@ -2,14 +2,15 @@
   "name": "baby-sitter-test",
   "version": "1.0.0",
   "scripts": {
-    "test": "npx playwright test",
-    "serve": "npx serve -p 23333 ./src/dist"
+    "test": "playwright test",
+    "serve": "serve --cors -p 23333 ./src/dist"
   },
   "author": "iShawnWang",
   "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.25.2",
-    "@types/node": "^18.11.2"
+    "@types/node": "^18.11.2",
+    "serve": "^14.0.1"
   },
   "dependencies": {
     "@babel/core": "^7.19.6",

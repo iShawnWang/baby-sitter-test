@@ -153,7 +153,7 @@ test.describe("网络请求", () => {
     });
   });
 
-  test("fetchSlow", async ({ page }) => {
+  test.skip("fetchSlow", async ({ page }) => {
     const type = "fetchSlow";
     await genPageAndGoto({
       path: `./src/request/${type}`,
@@ -184,7 +184,7 @@ test.describe("网络请求", () => {
     });
   });
 
-  test("fetchTimeout", async ({ page }) => {
+  test.skip("fetchTimeout", async ({ page }) => {
     const type = "fetchTimeout";
     await genPageAndGoto({
       path: `./src/request/${type}`,

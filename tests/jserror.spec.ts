@@ -91,7 +91,7 @@ test.describe("JS 错误", () => {
       "Uncaught SyntaxError: Invalid or unexpected token"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
-    expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
+    expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(0);
     expect(body.error[0].logInfo.line).toBeDefined();
     expect(body.error[0].logInfo.col).toBeDefined();
     expect(body.error[0].logInfo.type).toBe("SyntaxError");

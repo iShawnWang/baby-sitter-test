@@ -37,7 +37,7 @@ export const genPageAndGoto = async ({
   await page.goto(filepath);
 };
 
-export const waitNextRequest = async (page, timeout = 6) => {
+export const waitNextRequest = async (page, timeout = 8) => {
   return new Promise<Request>((resolve, reject) => {
     page.on("request", (request: Request) => {
       resolve(request);
@@ -171,8 +171,7 @@ const config: PlaywrightTestConfig = {
   webServer: {
     command: "npm run serve",
     port: 23333,
-    timeout: 15 * 1000,
-    reuseExistingServer: !process.env.CI,
+    timeout: 10 * 1000,
   },
   projects: process.env.CI ? [
     {
