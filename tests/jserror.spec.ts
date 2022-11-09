@@ -77,7 +77,7 @@ test.describe("JS 错误", () => {
     const type = "syntax";
     await genPageAndGoto({
       path: `./src/jserror/${type}`,
-      template: "src/SyntaxError.html",
+      template: "src/jserror/SyntaxError.html",
       filename: type,
       page,
     });

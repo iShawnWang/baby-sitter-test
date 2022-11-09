@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./monitor.trace.umd.js"></script>
+    <script>
+      MonitorJS({
+        debug: true,
+      });
+    </script>
+
+    <script>
+      fetch("https://baby-sitter-test-api.vercel.app/api/status/200");
+    </script>
+    <script>
+      !(function (c, b, d, a) {
+        c[a] || (c[a] = {});
+        c[a].config = {
+          pid: "ak6td13tu7",
+          appType: "web",
+          imgUrl: "https://arms-retcode.aliyuncs.com/r.png?",
+          sendResource: true,
+          enableLinkTrace: true,
+          behavior: true,
+        };
+        with (b)
+          with (body)
+            with (insertBefore(createElement("script"), firstChild))
+              setAttribute("crossorigin", "", (src = d));
+      })(window, document, "https://retcode.alicdn.com/retcode/bl.js", "__bl");
+    </script>
+  </body>
+</html>

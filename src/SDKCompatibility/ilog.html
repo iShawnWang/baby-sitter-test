@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://g.zacdn.cn/anlink-xflow-online/static/sdk/dist/js/v0.0.1/ilog.js?id=hello&setting=true"></script>
+    <script src="./monitor.trace.umd.js"></script>
+    <script>
+      MonitorJS({
+        debug: true,
+      });
+
+      setTimeout(() => {
+        _XFLOW_ = new XFlow({
+          serverUrl:
+            "https://zhongan-xflow-nginx.zhongan.com/cloud_web_sdk.gif",
+          input: true,
+          history: true,
+          openXcxJsBridge: true,
+          maxStringLength: 9999,
+          method: "post",
+        });
+
+        window._XFLOW_.pushEvent(["click", "忽略-测试事件"]);
+      }, 2000);
+    </script>
+
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>

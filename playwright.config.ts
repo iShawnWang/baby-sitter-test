@@ -48,6 +48,18 @@ export const waitNextRequest = async (page, timeout = 8) => {
   });
 };
 
+export const waitAllRequest = async (page, timeout = 5) => {
+  const reqs: any = []
+  return new Promise<Request[]>((resolve, reject) => {
+    page.on("request", (request: Request) => {
+      reqs.push(request)
+    });
+    setTimeout(() => {
+      resolve(reqs)
+    }, timeout * 1000);
+  });
+}
+
 expect.extend({
   toInlucdesProps(received, argument) {
     if (!received) {
@@ -115,13 +127,7 @@ expect.extend({
     expect(received.userAgent).toBeDefined();
     expect(received.deviceId).toBeDefined();
     expect(received.userId).toBeDefined();
-    expect(received.events).toIncludesObject({
-      to: `http://localhost:23333/${argument.type}`,
-      from: "",
-      category: "pv",
-      type: "init",
-      timestamp: 166,
-    });
+
     return {
       pass: true,
       message: () =>

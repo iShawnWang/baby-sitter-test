@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://g.zacdn.cn/anlink-xflow-online/static/sdk/dist/js/v0.0.1/ilog.js?id=hello&setting=true"></script>
+
+    <script src="./monitor.trace.umd.js"></script>
+    <script src="https://browser.sentry-cdn.com/7.15.0/bundle.tracing.min.js"></script>
+    <script>
+      MonitorJS({
+        debug: true,
+      });
+      Sentry.init({
+        dsn: "https://78da206fb0b0464499a3aea217b55cb5@o163026.ingest.sentry.io/5728691",
+        release: "0.0.1",
+        integrations: [new Sentry.BrowserTracing()],
+        tracesSampleRate: 1.0,
+      });
+    </script>
+    <script>
+      fetch("https://baby-sitter-test-api.vercel.app/api/status/200");
+    </script>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
