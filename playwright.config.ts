@@ -43,7 +43,7 @@ export const waitNextRequest = async (page, timeout = 8) => {
       resolve(request);
     });
     setTimeout(() => {
-      reject("timeout !");
+      reject("timeout !!!!!!!");
     }, timeout * 1000);
   });
 };

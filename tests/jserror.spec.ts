@@ -64,7 +64,7 @@ test.describe("JS 错误", () => {
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
     expect(body.error[0].logInfo.msg).toMatch(
-      "a is not defined"
+      "a"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
@@ -200,7 +200,7 @@ test.describe("其它 JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe("Uncaught Error: async error");
+    expect(body.error[0].logInfo.msg).toMatch('async error');
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
     expect(body.error[0].logInfo.line).toBeDefined();

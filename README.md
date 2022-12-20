@@ -5,4 +5,4 @@
 # tests
 
 1. run specific test: `npx playwright -g fetch200`
-2. debug: `npx playwright test -g fetch200 --headed --debug --project='iPhone 6'`
+2. debug: `npx playwright test -g setTimeout --headed --debug --project='iPhone 6'`
