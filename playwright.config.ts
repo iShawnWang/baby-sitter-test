@@ -180,7 +180,7 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: true,
   },
   {
-    command: 'cd api && npm run dev',
+    command: process.env.CI ? 'cd api && npm install -g pnpm && pnpm install && npm run dev' : 'cd api && npm run dev',
     port: 996,
     timeout: 5 * 1000,
     reuseExistingServer: true,
