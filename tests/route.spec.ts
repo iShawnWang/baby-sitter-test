@@ -16,7 +16,7 @@ test.describe("History", () => [
     expect(body.events[1].category).toBe("pv");
     expect(body.events[1].from).toContain("/history");
     expect(body.events[1].timestamp).toBeGreaterThan(1);
-    expect(body.events[1].to).toBe("/a=1");
+    expect(body.events[1].to).toBe("http://localhost:23333/a=1");
     expect(body.events[1].type).toBe("pushState");
   }),
 ]);

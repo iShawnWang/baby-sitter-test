@@ -123,7 +123,6 @@ expect.extend({
     expect(received.url).toBeDefined();
     expect(received.seraphId).toBeDefined();
     expect(received.sessionId).toBeDefined();
-    expect(received.network).toBeDefined();
     expect(received.userAgent).toBeDefined();
     expect(received.deviceId).toBeDefined();
     expect(received.userId).toBeDefined();
@@ -174,12 +173,19 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 0,
     trace: "on-first-retry",
   },
-  webServer: {
+  webServer: [{
     command: "npm run serve",
     port: 23333,
     timeout: 10 * 1000,
+    reuseExistingServer: true,
   },
-  projects: process.env.CI ? [
+  {
+    command: 'cd api && npm run dev',
+    port: 996,
+    timeout: 5 * 1000,
+    reuseExistingServer: true,
+  }],
+  projects: true ? [
     {
       name: 'Desktop Edge',
       use: {

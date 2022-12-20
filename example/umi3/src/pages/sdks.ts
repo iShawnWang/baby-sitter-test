@@ -2,11 +2,12 @@ import { appendScript } from './util'
 import MonitorJS from '@za/seraph-sdk'
 
 export const createSeraphMonitorSDK = () => {
-  // const s = appendScript({ src: window.location.href.indexOf('localhost') !== -1 ? 'http://localhost:3000/index.umd.js' : 'https://s.zhongan.io/seraph-js-sdk/dist/js/monitor.1.0.5.js' })
+  // const s = appendScript({ src: window.location.href.indexOf('localhost') !== -1 ? 'http://localhost:3000/dist/monitor.trace.umd.js' : 'https://s.zhongan.io/seraph-js-sdk/dist/js/monitor.1.0.5.js' })
 
   // s.onload = () => {
-  //   window._SERAPH_ = MonitorJS({
-  //     siteId: "test",
+  //   MonitorJS({
+  //     seraphId: "test",
+  //     H5Version: "9.9.9",
   //     debug: true,
   //     trace: {
   //       serviceName: 'wangshuai-demo',
@@ -22,6 +23,7 @@ export const createSeraphMonitorSDK = () => {
     window._SERAPH_ = MonitorJS({
       seraphId: "test",
       debug: true,
+      H5Version: "9.9.9",
       trace: {
         serviceName: 'wangshuai-demo',
         serviceId: '2333',
