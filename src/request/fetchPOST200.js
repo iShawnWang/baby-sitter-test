@@ -1,4 +1,4 @@
-fetch("https://baby-sitter-test-api.vercel.app/api/status/200", {
+fetch("http://localhost:9996/api/status/200", {
   method: "POST",
   body: JSON.stringify({
     title: "foo",

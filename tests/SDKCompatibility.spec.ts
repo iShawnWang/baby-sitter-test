@@ -114,27 +114,29 @@ test.describe("SDKAPI", () => [
         const body = JSON.parse(postBody)
         //六翼上报请求
         expect(body).toHaveCommonPropties({ type });
-        expect(body.fetch.length).toBeGreaterThan(1);
-        expect(body.fetch[0].async).toBe(true);
-        expect(body.fetch[0].category).toBe("Fetch");
-        expect(body.fetch[0].cbTime).toBeGreaterThan(0);
-        expect(body.fetch[0].msg).toBe("");
-        expect(body.fetch[0].url?.length).toBeGreaterThan(10);
-        expect(body.fetch[0].timing).toInlucdesProps({
-          duration: "",
-          mark: true,
-          initiatorType: "fetch",
-          decodedBodySize: "",
-          fetchStart: "",
-          name: "",
-          responseEnd: "",
-        });
+        if(body.fetch?.length > 0){
+          expect(body.fetch.length).toBeGreaterThan(1);
+          expect(body.fetch[0].async).toBe(true);
+          expect(body.fetch[0].category).toBe("Fetch");
+          expect(body.fetch[0].cbTime).toBeGreaterThan(0);
+          expect(body.fetch[0].msg).toBe("");
+          expect(body.fetch[0].url?.length).toBeGreaterThan(10);
+          expect(body.fetch[0].timing).toInlucdesProps({
+            duration: "",
+            mark: true,
+            initiatorType: "fetch",
+            decodedBodySize: "",
+            fetchStart: "",
+            name: "",
+            responseEnd: "",
+          });
+        }else {
+          expect(body.ajax.length).toBeGreaterThanOrEqual(1);
+        }
       }else {
         const u = r.url()
         expect(u).toMatch('pid')
         expect(u).toMatch('pv_id')
-        expect(u).toMatch('traceId')
-        expect(u).toMatch('domain')
       }
     });
   }),

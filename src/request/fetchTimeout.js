@@ -1,1 +1,1 @@
-fetch("https://baby-sitter-test-api.vercel.app/api/slow/31000");
+fetch("http://localhost:9996/api/slow/31000");

@@ -17,8 +17,8 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe(
-      "Uncaught EvalError: unable to eval"
+    expect(body.error[0].logInfo.msg).toMatch(
+      "unable to eval"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
@@ -40,8 +40,8 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe(
-      "Uncaught RangeError: Invalid array length"
+    expect(body.error[0].logInfo.msg).toMatch(
+      "RangeError"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
@@ -63,8 +63,8 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe(
-      "Uncaught ReferenceError: a is not defined"
+    expect(body.error[0].logInfo.msg).toMatch(
+      "a is not defined"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
@@ -87,8 +87,8 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe(
-      "Uncaught SyntaxError: Invalid or unexpected token"
+    expect(body.error[0].logInfo.msg).toMatch(
+      "SyntaxError"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(0);
@@ -110,8 +110,8 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe(
-      "Uncaught TypeError: Cannot read properties of null (reading 'f')"
+    expect(body.error[0].logInfo.msg).toMatch(
+      'TypeError'
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
@@ -133,7 +133,7 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe("Uncaught URIError: URI malformed");
+    expect(body.error[0].logInfo.msg).toMatch("URIError");
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
     expect(body.error[0].logInfo.line).toBeDefined();
@@ -154,7 +154,7 @@ test.describe("JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe("Uncaught AggregateError: Hello");
+    expect(body.error[0].logInfo.msg).toMatch('AggregateError')
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
     expect(body.error[0].logInfo.line).toBeDefined();
@@ -177,8 +177,8 @@ test.describe("其它 JS 错误", () => {
     expect(body.error).toHaveLength(1);
     expect(body.error[0].category).toBe("js_error");
     expect(body.error[0].logType).toBe("Warning");
-    expect(body.error[0].logInfo.msg).toBe(
-      "Uncaught Error: unsupport param: e"
+    expect(body.error[0].logInfo.msg).toMatch(
+      "unsupport param: e"
     );
     expect(body.error[0].logInfo.url).toBeDefined();
     expect(body.error[0].logInfo.stack.length).toBeGreaterThanOrEqual(1);
