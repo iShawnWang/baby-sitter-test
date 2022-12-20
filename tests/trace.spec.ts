@@ -25,6 +25,5 @@ test.describe("Trace", () => [
     expect(span.scopeSpans[0].spans[0].spanId).toBeDefined();
     expect(span.scopeSpans[0].spans[0].traceId).toBeDefined();
     expect(span.scopeSpans[0].spans[0].startTimeUnixNano).toBeDefined();
-    expect(span.scopeSpans[0].spans[0].events?.length).toBeGreaterThan(1);
   }),
 ]);
