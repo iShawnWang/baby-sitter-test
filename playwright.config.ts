@@ -181,7 +181,7 @@ const config: PlaywrightTestConfig = {
   },
   {
     command: 'cd api && npm run dev',
-    port: 996,
+    port: 9996,
     timeout: 5 * 1000,
     reuseExistingServer: true,
   }],
