@@ -1,27 +1,28 @@
 import { appendScript } from './util'
-import MonitorJS from '@za/seraph-sdk'
+import SeraphSDK from '@za/seraph-sdk'
 
-export const createSeraphMonitorSDK = () => {
-  // const s = appendScript({ src: window.location.href.indexOf('localhost') !== -1 ? 'http://localhost:3000/dist/monitor.trace.umd.js' : 'https://s.zhongan.io/seraph-js-sdk/dist/js/monitor.1.0.5.js' })
+export const createSeraphMonitorSDKRemote = () => {
+  const s = appendScript({ src: 'http://localhost:3000/dist/monitor.trace.umd.js' })
 
-  // s.onload = () => {
-  //   MonitorJS({
-  //     seraphId: "test",
-  //     H5Version: "9.9.9",
-  //     debug: true,
-  //     trace: {
-  //       serviceName: 'wangshuai-demo',
-  //       serviceId: '2333',
-  //       companyId: '79002',
-  //       env: 'prd',
-  //       corsUrls: [/jsonplaceholder/, /example/],
-  //     },
-  //   });
-  // }
+  s.onload = () => {
+    MonitorJS({
+      seraphId: "test-remote",
+      H5Version: "9.9.9",
+      debug: true,
+      trace: {
+        serviceName: 'wangshuai-demo',
+        serviceId: '2333',
+        companyId: '79002',
+        env: 'prd',
+        corsUrls: [/jsonplaceholder/, /example/],
+      },
+    });
+  }
+}
 
-
-    window._SERAPH_ = MonitorJS({
-      seraphId: "test",
+export const createSeraphMonitorSDKLocal = () => {
+    window._SERAPH_ = SeraphSDK({
+      seraphId: "test-local",
       debug: true,
       H5Version: "9.9.9",
       trace: {
@@ -33,6 +34,7 @@ export const createSeraphMonitorSDK = () => {
       },
     });
 }
+
 
 
 export const createAliArmsSDK = () => {

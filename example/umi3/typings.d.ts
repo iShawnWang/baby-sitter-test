@@ -8,3 +8,12 @@ declare module '*.svg' {
   const url: string;
   export default url;
 }
+
+interface Window {
+  apmPlus: any
+  __bl: any
+  _SERAPH_: any
+}
+
+declare const MonitorJS: any;
+declare const Sentry: any;
