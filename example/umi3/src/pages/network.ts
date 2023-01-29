@@ -37,7 +37,7 @@ export const createFetch500 = () => {
 
 export const createXhr200 = () => {
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "https://baby-sitter-test-api.vercel.app/api/status/200");
+  oReq.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
   oReq.send();
 };
 
