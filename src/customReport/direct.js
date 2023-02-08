@@ -1,0 +1,1 @@
+__SERAPH_HAS_MONITOR__.sendCustomEvent({name: 'checkout', attributes: {source: "活动A"}, metrics: {value: 233}})

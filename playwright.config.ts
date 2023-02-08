@@ -119,7 +119,7 @@ expect.extend({
     expect(received).toBeDefined();
     expect(received.source).toBe("H5");
     expect(received.env).toBe("prd");
-    expect(received.jsSdkVersion).toBe("2.0.0");
+    expect(received.jsSdkVersion).toBe("2.2.0");
     expect(received.url).toBeDefined();
     expect(received.seraphId).toBeDefined();
     expect(received.sessionId).toBeDefined();
